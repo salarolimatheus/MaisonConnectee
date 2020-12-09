@@ -1,13 +1,13 @@
-package salaroli.com.mamaison.ui.notifications
+package salaroli.com.mamaison.ui.regles
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class ReglesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }
