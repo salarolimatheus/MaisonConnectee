@@ -1,6 +1,9 @@
 <resources>
-    <string name="app_name">Ma Maison</string>
-    <string name="title_regles">Regles</string>
-    <string name="title_maison">Maison</string>
+    <string name="app_name">My Home</string>
+    <string name="title_regles">Rules</string>
+    <string name="title_maison">Home</string>
     <string name="title_routines">Routines</string>
+    <string name="create">create</string>
+    <string name="options">options</string>
+    <string name="rules">rules</string>
 </resources>

@@ -19,9 +19,8 @@ class RoutinesFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        routinesViewModel =
-                ViewModelProvider(this).get(RoutinesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_notifications, container, false)
+        routinesViewModel = ViewModelProvider(this).get(RoutinesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_routines, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         routinesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

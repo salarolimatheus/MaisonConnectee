@@ -1,4 +1,4 @@
-package salaroli.com.mamaison.ui.maison
+package salaroli.com.mamaison.ui.regles
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import salaroli.com.mamaison.R
 
-class MaisonFragment : Fragment() {
+class RulesFragment : Fragment() {
 
-    private lateinit var maisonViewModel: MaisonViewModel
+    private lateinit var rulesViewModel: RulesViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        maisonViewModel =
-                ViewModelProvider(this).get(MaisonViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        maisonViewModel.text.observe(viewLifecycleOwner, Observer {
+        rulesViewModel =
+                ViewModelProvider(this).get(RulesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_rules, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        rulesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
