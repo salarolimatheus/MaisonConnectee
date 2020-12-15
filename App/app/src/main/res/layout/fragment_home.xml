@@ -7,6 +7,40 @@
     tools:context=".ui.maison.HomeFragment"
     android:paddingBottom="?actionBarSize">
 
+    <ImageButton
+        android:id="@+id/add_home"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_add_circle_outline_24"
+        android:tint="@color/black"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="@string/add_device"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/preferences_home"
+        app:layout_constraintLeft_toRightOf="@+id/add_home"
+        android:textSize="32sp"
+        android:textColor="@color/secondaryTextColor"
+        android:textStyle="bold"
+        android:text="Casinha Feliz"/>
+    <ImageButton
+        android:id="@+id/preferences_home"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_settings_24"
+        android:tint="@color/black"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="@string/preferences"/>
+
+    
+
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -21,13 +55,42 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_window"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fab_temperature"
+        app:srcCompat="@drawable/ic_window"
+        android:visibility="invisible"
+        android:contentDescription="@string/windows"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fab_lamp"
+        app:srcCompat="@drawable/ic_temperature"
+        android:visibility="invisible"
+        android:contentDescription="@string/temperature"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_lamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fab_home"
+        app:srcCompat="@drawable/ic_lamp"
+        android:visibility="invisible"
+        android:contentDescription="@string/light"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_baseline_api_24"
-        android:contentDescription="@string/options">
-
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        android:contentDescription="@string/options"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
