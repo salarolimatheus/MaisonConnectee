@@ -1,6 +1,5 @@
 package salaroli.com.mamaison.ui.maison
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import salaroli.com.expandablecardview.ExpandableCardView
+import salaroli.com.expandablecardview.ExpandableCardView.InterfaceExpandableCardView
+import salaroli.com.expandablecardview.IotDevice
 import salaroli.com.mamaison.DevicesActivity
 import salaroli.com.mamaison.PreferencesActivity
 import salaroli.com.mamaison.R
 import salaroli.com.mamaison.R.color.*
-
+import java.util.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
@@ -27,11 +30,13 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var fabWindow: FloatingActionButton
     private lateinit var addButton: ImageButton
     private lateinit var preferencesButton: ImageButton
+    private lateinit var cardView1: ExpandableCardView
+    private lateinit var cardView2: ExpandableCardView
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_home, container, false)
@@ -41,11 +46,57 @@ class HomeFragment : Fragment(), View.OnClickListener {
         addButton = view.findViewById(R.id.add_home)
         fabWindow = view.findViewById(R.id.fab_window)
         preferencesButton = view.findViewById(R.id.preferences_home)
+        //recycleView = view.findViewById(R.id.list_home)
+        cardView1 = view.findViewById(R.id.cardview_principal)
+        cardView2 = view.findViewById(R.id.cardview_secundario)
 
         fabHome.setOnClickListener(this)
         addButton.setOnClickListener(this)
         preferencesButton.setOnClickListener(this)
+        updateCards()
         return view
+    }
+
+    private fun updateCards() {
+        val devices: MutableList<IotDevice> = ArrayList()
+        devices.add(IotDevice(R.drawable.lamp, "Objeto 1"))
+        devices.add(IotDevice(R.drawable.window_open, "Objeto 2"))
+        devices.add(IotDevice(R.drawable.lamp, "Objeto 3"))
+        devices.add(IotDevice(R.drawable.window_open, "Objeto 4"))
+
+        cardView1.setText("Room", "22.18 °C")
+        cardView1.enableFirstAction()
+        cardView1.enableSecondAction()
+
+        cardView1.setInterfaceListener(object : InterfaceExpandableCardView {
+            override fun onItemSelect(device: IotDevice) {
+                Toast.makeText(context, device.textDevice, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun noDevice() {
+                Toast.makeText(context, "No Device", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        cardView1.setFirstAction(R.drawable.lamp)
+        cardView1.setSecondAction(R.drawable.window_open)
+        cardView1.setDevices(devices)
+
+        cardView2.setPrimaryText("Kitchen")
+        cardView2.setSecondaryText("")
+        cardView2.disableFirstAction()
+        cardView2.disableSecondAction()
+        cardView2.setDevices(devices);
+
+        cardView2.setInterfaceListener(object : InterfaceExpandableCardView {
+            override fun onItemSelect(device: IotDevice) {
+                Toast.makeText(context, device.textDevice, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun noDevice() {
+                Toast.makeText(context, "No Device", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     override fun onClick(view: View) {
@@ -90,7 +141,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             fabTemp.visibility = View.INVISIBLE
             fabWindow.visibility = View.INVISIBLE
             fabHome.startAnimation(rotation)
-            fabHome.backgroundTintList = ContextCompat.getColorStateList(requireContext(), secondaryColor)
+            fabHome.backgroundTintList = ContextCompat.getColorStateList(
+                requireContext(),
+                secondaryColor
+            )
             fabHome.imageTintList = ContextCompat.getColorStateList(requireContext(), black)
         }
     }
