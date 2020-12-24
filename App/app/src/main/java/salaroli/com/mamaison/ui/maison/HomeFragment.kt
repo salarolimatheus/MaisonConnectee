@@ -11,10 +11,13 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import salaroli.com.expandablecardview.ExpandableCardView
-import salaroli.com.expandablecardview.ExpandableCardView.InterfaceExpandableCardView
 import salaroli.com.expandablecardview.IotDevice
+import salaroli.com.expandablecardview.RecyclerView.RecyclerViewRoom
+import salaroli.com.expandablecardview.RecyclerView.Room
+import salaroli.com.expandablecardview.RecyclerView.RoomAdapter
+import salaroli.com.expandablecardview.RecyclerView.RoomAdapter.InterfaceRecyclerCardView
 import salaroli.com.mamaison.DevicesActivity
 import salaroli.com.mamaison.PreferencesActivity
 import salaroli.com.mamaison.R
@@ -30,8 +33,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private lateinit var fabWindow: FloatingActionButton
     private lateinit var addButton: ImageButton
     private lateinit var preferencesButton: ImageButton
-    private lateinit var cardView1: ExpandableCardView
-    private lateinit var cardView2: ExpandableCardView
+    private lateinit var recyclerView: RecyclerViewRoom
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,9 +48,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         addButton = view.findViewById(R.id.add_home)
         fabWindow = view.findViewById(R.id.fab_window)
         preferencesButton = view.findViewById(R.id.preferences_home)
-        //recycleView = view.findViewById(R.id.list_home)
-        cardView1 = view.findViewById(R.id.cardview_principal)
-        cardView2 = view.findViewById(R.id.cardview_secundario)
+        recyclerView = view.findViewById(R.id.list_home)
 
         fabHome.setOnClickListener(this)
         addButton.setOnClickListener(this)
@@ -58,45 +58,37 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun updateCards() {
+        //TODO: AQUI VAI A DATABASE
         val devices: MutableList<IotDevice> = ArrayList()
         devices.add(IotDevice(R.drawable.lamp, "Objeto 1"))
         devices.add(IotDevice(R.drawable.window_open, "Objeto 2"))
         devices.add(IotDevice(R.drawable.lamp, "Objeto 3"))
         devices.add(IotDevice(R.drawable.window_open, "Objeto 4"))
+        val devices1: MutableList<IotDevice> = ArrayList()
+        devices1.add(IotDevice(R.drawable.window_open, "Objeto 1"))
+        devices1.add(IotDevice(R.drawable.lamp, "Objeto 2"))
 
-        cardView1.setText("Room", "22.18 °C")
-        cardView1.enableFirstAction()
-        cardView1.enableSecondAction()
+        val listRoom: MutableList<Room> = ArrayList()
+        listRoom.add(Room(1, "Bedroom", "", devices, true, true,R.drawable.lamp, R.drawable.window_open))
+        listRoom.add(Room(2, "Kitchen", "", devices1, false, false, 0, 0))
+        //ACIMA VAI MUDAR PRA PUXAR DA DATABASE
 
-        cardView1.setInterfaceListener(object : InterfaceExpandableCardView {
-            override fun onItemSelect(device: IotDevice) {
-                Toast.makeText(context, device.textDevice, Toast.LENGTH_SHORT).show()
+        val myAdapter = RoomAdapter(context, listRoom)
+        myAdapter.setInterfaceListener(object : InterfaceRecyclerCardView {
+            override fun onItemSelect(room: Room, device: IotDevice) {
+                Toast.makeText(context,room.nameRoom + "  " + device.textDevice,Toast.LENGTH_SHORT).show()
+                //TODO: AQUI VAI ABRIR ALGUMA COISA
             }
-
-            override fun noDevice() {
-                Toast.makeText(context, "No Device", Toast.LENGTH_SHORT).show()
-            }
-        })
-
-        cardView1.setFirstAction(R.drawable.lamp)
-        cardView1.setSecondAction(R.drawable.window_open)
-        cardView1.setDevices(devices)
-
-        cardView2.setPrimaryText("Kitchen")
-        cardView2.setSecondaryText("")
-        cardView2.disableFirstAction()
-        cardView2.disableSecondAction()
-        cardView2.setDevices(devices);
-
-        cardView2.setInterfaceListener(object : InterfaceExpandableCardView {
-            override fun onItemSelect(device: IotDevice) {
-                Toast.makeText(context, device.textDevice, Toast.LENGTH_SHORT).show()
-            }
-
-            override fun noDevice() {
-                Toast.makeText(context, "No Device", Toast.LENGTH_SHORT).show()
+            override fun noDevice(room: Room) {
+                Toast.makeText(context, room.nameRoom + ": no devices", Toast.LENGTH_SHORT).show()
+                //TODO: AQUI VAI ABRIR ALGUMA COISA
             }
         })
+        recyclerView.apply {
+            adapter = myAdapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+        }
     }
 
     override fun onClick(view: View) {
@@ -112,13 +104,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
         startActivity(intentDevices)
         requireActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
     }
-
     private fun preferencesHomeAction() {
         val intentPreferences = Intent(context, PreferencesActivity::class.java)
         startActivity(intentPreferences)
         requireActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
-
     private fun fabHomeAction() {
         val animationUp = AnimationUtils.loadAnimation(context, R.anim.jump_from_down)
         val animationDown = AnimationUtils.loadAnimation(context, R.anim.jump_to_down)
