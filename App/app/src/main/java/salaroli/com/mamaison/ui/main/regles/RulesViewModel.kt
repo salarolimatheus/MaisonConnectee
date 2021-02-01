@@ -1,4 +1,4 @@
-package salaroli.com.mamaison.ui.regles
+package salaroli.com.mamaison.ui.main.regles
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

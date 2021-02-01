@@ -1,4 +1,4 @@
-package salaroli.com.mamaison.ui.regles
+package salaroli.com.mamaison.ui.main.regles
 
 import android.os.Bundle
 import android.view.LayoutInflater

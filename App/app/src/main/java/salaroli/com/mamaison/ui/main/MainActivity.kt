@@ -1,13 +1,11 @@
-package salaroli.com.mamaison
+package salaroli.com.mamaison.ui.main
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager.widget.ViewPager
+import salaroli.com.mamaison.R
 
 class MainActivity : AppCompatActivity() {
 

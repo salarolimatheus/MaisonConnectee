@@ -5,8 +5,140 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DevicesActivity"
-    android:id="@+id/devices_view"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".ui.devices.NewDevicesActivity">
+
+    <TextView
+        android:id="@+id/texttitledevices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:text="@string/configure_your_home"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:viewBindingIgnore="true"/>
+
+    <TextView
+        android:id="@+id/numberrooms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0"
+        android:textSize="48sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/texttitledevices" />
+
+    <TextView
+        android:id="@+id/numberdevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_0"
+        android:textSize="48sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/texttitledevices" />
+
+    <TextView
+        android:id="@+id/textrooms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rooms"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline1"
+        app:layout_constraintRight_toRightOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/numberrooms"
+        tools:viewBindingIgnore="true"/>
+
+    <TextView
+        android:id="@+id/textdevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/devices"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/numberdevices"
+        tools:viewBindingIgnore="true"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:contentDescription="@string/search_for_a_device"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline0"
+        app:layout_constraintRight_toRightOf="@+id/guideline0"
+        app:layout_constraintTop_toBottomOf="@id/textrooms"
+        app:srcCompat="@drawable/ic_create" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_show_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:contentDescription="@string/search_for_a_device"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textrooms"
+        app:srcCompat="@drawable/ic_maison"
+        android:tint="@color/black"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_search_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="25dp"
+        android:contentDescription="@string/search_for_a_device"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
+        app:layout_constraintRight_toRightOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@id/textrooms"
+        app:srcCompat="@drawable/ic_add" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/view_device"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_search_device" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        tools:viewBindingIgnore="true"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"
+        tools:viewBindingIgnore="true"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66"
+        tools:viewBindingIgnore="true"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        tools:viewBindingIgnore="true"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

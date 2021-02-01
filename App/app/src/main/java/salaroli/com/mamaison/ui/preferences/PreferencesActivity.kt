@@ -1,9 +1,9 @@
-package salaroli.com.mamaison
+package salaroli.com.mamaison.ui.preferences
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import salaroli.com.mamaison.R
 
 class PreferencesActivity : AppCompatActivity() {
 

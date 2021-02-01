@@ -1,0 +1,9 @@
+sudo openhabian-config
+cd etc/openhab2/
+ls
+sudo nano nomeArquivo.xxx
+sudo shutdown
+ifconfig
+
+
+https://www.youtube.com/watch?v=VeO-O2zcp3U&ab_channel=EDMTDev

@@ -1,4 +1,4 @@
-package salaroli.com.mamaison.ui.routines
+package salaroli.com.mamaison.ui.main.routines
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

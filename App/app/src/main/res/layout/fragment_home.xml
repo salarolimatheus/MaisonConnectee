@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.maison.HomeFragment"
+    tools:context=".ui.main.maison.HomeFragment"
     android:paddingBottom="?actionBarSize">
 
     <ImageButton
@@ -42,7 +42,7 @@
         android:background="?android:selectableItemBackground"
         android:contentDescription="@string/preferences"/>
 
-    <salaroli.com.expandablecardview.RecyclerView.RecyclerViewRoom
+    <salaroli.com.expandablecardview.RecyclerView.RecyclerViewSpace
         android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

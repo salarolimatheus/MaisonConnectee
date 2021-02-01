@@ -1,4 +1,4 @@
-package salaroli.com.mamaison.ui.routines
+package salaroli.com.mamaison.ui.main.routines
 
 import android.os.Bundle
 import android.view.LayoutInflater

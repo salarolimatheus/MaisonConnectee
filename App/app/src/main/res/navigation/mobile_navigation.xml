@@ -6,20 +6,20 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="salaroli.com.mamaison.ui.regles.RulesFragment"
+        android:id="@+id/navigation_rules"
+        android:name="salaroli.com.mamaison.ui.main.regles.RulesFragment"
         android:label="@string/title_regles"
         tools:layout="@layout/fragment_rules" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="salaroli.com.mamaison.ui.maison.HomeFragment"
+        android:id="@+id/navigation_home"
+        android:name="salaroli.com.mamaison.ui.main.maison.HomeFragment"
         android:label="@string/title_maison"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="salaroli.com.mamaison.ui.routines.RoutinesFragment"
+        android:id="@+id/navigation_routines"
+        android:name="salaroli.com.mamaison.ui.main.routines.RoutinesFragment"
         android:label="@string/title_routines"
         tools:layout="@layout/fragment_routines" />
 </navigation>

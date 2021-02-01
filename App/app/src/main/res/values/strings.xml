@@ -28,4 +28,9 @@
     <string name="temperature">Temperature</string>
     <string name="light">Light</string>
     <string name="expand_card">Expand card</string>
+    <string name="configure_your_home">Configure your home</string>
+    <string name="_0">0</string>
+    <string name="rooms">Rooms</string>
+    <string name="devices">Devices</string>
+    <string name="search_for_a_device">Search for a device</string>
 </resources>
