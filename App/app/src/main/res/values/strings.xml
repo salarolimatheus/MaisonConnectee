@@ -33,4 +33,7 @@
     <string name="rooms">Rooms</string>
     <string name="devices">Devices</string>
     <string name="search_for_a_device">Search for a device</string>
+    <string name="add">Add</string>
+    <string name="recognizing_device">Recognizing device</string>
+    <string name="setting_up_device">Setting up device</string>
 </resources>

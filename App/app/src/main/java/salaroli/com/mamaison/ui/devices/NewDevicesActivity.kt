@@ -8,19 +8,27 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import salaroli.com.mamaison.R
 import salaroli.com.mamaison.databinding.ActivityDevicesBinding
 
 class NewDevicesActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDevicesBinding
     private lateinit var wifiManager: WifiManager
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDevicesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+
+        binding.fabAddRoom.setOnClickListener(this)
+        binding.fabShowHome.setOnClickListener(this)
         binding.fabSearchDevice.setOnClickListener(this)
+
+        navController = findNavController(R.id.nav_device_fragment)
     }
 
     override fun onBackPressed() {
@@ -31,11 +39,12 @@ class NewDevicesActivity : AppCompatActivity(), View.OnClickListener {
         when(view.id) {
             R.id.fab_search_device -> addDeviceProcess()
             R.id.fab_add_room -> addRoomProcess()
-            R.id.fab_show_all -> showAllProcess()
+            R.id.fab_show_home -> showAllProcess()
         }
     }
 
     private fun addDeviceProcess() {
+        navController.navigate(R.id.navigation_adddevice)
         if (!wifiManager.isWifiEnabled) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) startActivityForResult(Intent(Settings.Panel.ACTION_WIFI), 545)
             else wifiManager.setWifiEnabled(true)
@@ -43,10 +52,10 @@ class NewDevicesActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun addRoomProcess() {
-        TODO("Not yet implemented")
+        navController.navigate(R.id.navigation_addroom)
     }
 
     private fun showAllProcess() {
-        TODO("Not yet implemented")
+        navController.navigate(R.id.navigation_showhome)
     }
 }

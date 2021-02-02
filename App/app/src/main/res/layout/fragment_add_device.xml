@@ -8,18 +8,19 @@
         android:id="@+id/text_setting_up_device"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Setting up device TODO"
+        android:text="@string/recognizing_device"
         android:textAlignment="center"
-        android:textSize="32sp"
+        android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <salaroli.com.expandablecardview.RecyclerView.RecyclerViewSpace
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_wifi"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_setting_up_device" />
-
+        app:layout_constraintTop_toBottomOf="@+id/text_setting_up_device"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

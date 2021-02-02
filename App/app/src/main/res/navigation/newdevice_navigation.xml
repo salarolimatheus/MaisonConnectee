@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/newdevice_navigation"
+    app:startDestination="@id/navigation_showhome">
+
+    <fragment
+        android:id="@+id/navigation_showhome"
+        android:name="salaroli.com.mamaison.ui.devices.fragments.ShowHome"
+        android:label="showhome"
+        tools:layout="@layout/fragment_show_home" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_addroom"
+        android:name="salaroli.com.mamaison.ui.devices.fragments.AddRoom"
+        android:label="addroom"
+        tools:layout="@layout/fragment_add_room" />
+
+    <fragment
+        android:id="@+id/navigation_adddevice"
+        android:name="salaroli.com.mamaison.ui.devices.fragments.AddDevice"
+        android:label="adddevice1"
+        tools:layout="@layout/fragment_add_device" />
+
+    <fragment
+        android:id="@+id/navigation_adddevice2"
+        android:name="salaroli.com.mamaison.ui.devices.fragments.AddDevice2"
+        android:label="adddevice2"
+        tools:layout="@layout/fragment_add_device2" />
+</navigation>
