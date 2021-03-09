@@ -4,7 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import salaroli.com.mamaison.repository.SpaceRepository
 
-class HomeViewModelFactory(private val spaceRepository: SpaceRepository)
+class
+HomeViewModelFactory(private val spaceRepository: SpaceRepository)
     : ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")

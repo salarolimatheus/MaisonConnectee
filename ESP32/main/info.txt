@@ -1,0 +1,24 @@
+/* Auteur: Matheus Saracchini Salaroli
+Last change: 08/03/2021
+Version 0.1.6 (Last Version: 0.1.5)
+
+Version 0.1.6 - 09/03/2021
+* Corretions in sensors' package
+* Creation of communication and debug packages
+
+Version 0.1.5 - 05/03/2021
+Version 0.1.0 - 28/02/2021
+
+1. Capteur Adafruit BME680 (température, humidité, pression et de gaz)
+    https://learn.adafruit.com/adafruit-bme680-humidity-temperature-barometic-pressure-voc-gas
+    https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/bme680/
+
+-> https://github.com/ct-Open-Source/Basecamp
+*/
+
+
+//pinMatrixInAttach
+//pinMatrixOutAttach
+
+
+// mis a jour v1.5

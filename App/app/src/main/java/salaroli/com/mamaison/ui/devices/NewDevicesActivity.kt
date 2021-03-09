@@ -8,33 +8,37 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import salaroli.com.mamaison.R
 import salaroli.com.mamaison.databinding.ActivityDevicesBinding
+import salaroli.com.mamaison.ui.devices.fragments.AddDeviceViewModel
 
 class NewDevicesActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDevicesBinding
     private lateinit var wifiManager: WifiManager
     private lateinit var navController: NavController
+    private lateinit var viewModel: NewDevicesActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDevicesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+        navController = findNavController(R.id.nav_device_fragment)
+        viewModel = ViewModelProvider(this).get(NewDevicesActivityViewModel::class.java)
 
         binding.fabAddRoom.setOnClickListener(this)
         binding.fabShowHome.setOnClickListener(this)
         binding.fabSearchDevice.setOnClickListener(this)
-
-        navController = findNavController(R.id.nav_device_fragment)
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
+
     override fun onClick(view: View) {
         when(view.id) {
             R.id.fab_search_device -> addDeviceProcess()

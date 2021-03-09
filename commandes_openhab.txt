@@ -7,3 +7,4 @@ ifconfig
 
 
 https://www.youtube.com/watch?v=VeO-O2zcp3U&ab_channel=EDMTDev
+https://rahul9650ray.medium.com/how-to-implement-rest-api-in-android-using-retrofit-in-kotlin-part-1-1302cb0d978b
