@@ -5,6 +5,7 @@
 
 const bool debugMode = true;
 const unsigned long SERIAL_BAUD_RATE = 115200;
+const String SUBSCRIPTION_TOPIC_BSEC = "bsec";
 
 Bsec sensorBsec;
 SPIClass mySPI(VSPI);
@@ -22,26 +23,10 @@ void setup() {
 }
 
 void loop() {
-    //if(BsecHasNewData(&sensorBsec))
-    //    PackageData = BsecData();
-
-    unsigned long time_trigger = millis();
-    if (sensorBsec.run()) { // If new data is available
-        String output;
-        output = String(time_trigger);
-        output += ", " + String(sensorBsec.rawTemperature);
-        output += ", " + String(sensorBsec.pressure);
-        output += ", " + String(sensorBsec.rawHumidity);
-        output += ", " + String(sensorBsec.gasResistance);
-        output += ", " + String(sensorBsec.iaq);
-        output += ", " + String(sensorBsec.iaqAccuracy);
-        output += ", " + String(sensorBsec.temperature);
-        output += ", " + String(sensorBsec.humidity);
-        output += ", " + String(sensorBsec.staticIaq);
-        output += ", " + String(sensorBsec.co2Equivalent);
-        output += ", " + String(sensorBsec.breathVocEquivalent);
-        Serial.println(output);
-    } else {
-      //Serial.println(checkBsecStatus(&sensorBsec));
-    }
+    static PackageDataBsec packageDataBsec = PackageDataBsec(SUBSCRIPTION_TOPIC_BSEC);
+    SensorStatus status = BsecHasNewData(&sensorBsec, &packageDataBsec);
+    if (status == NEW_DATA)
+        PrintBsecData(&packageDataBsec);
+    else if (status == SENSOR_ERROR)
+        PackageError packageError = AnalyseAndRetryBsec(&sensorBsec, &mySPI, VSPI);
 }

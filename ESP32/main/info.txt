@@ -1,6 +1,10 @@
 /* Auteur: Matheus Saracchini Salaroli
-Last change: 08/03/2021
-Version 0.1.6 (Last Version: 0.1.5)
+Last change: 11/03/2021
+Version 0.1.7 (Last Version: 0.1.6)
+
+Version 0.1.7 - 11/03/2021
+* Sensors Control Layer completed
+* Corrections with Packages Hardware Layer
 
 Version 0.1.6 - 09/03/2021
 * Corretions in sensors' package
@@ -16,9 +20,17 @@ Version 0.1.0 - 28/02/2021
 -> https://github.com/ct-Open-Source/Basecamp
 */
 
+// Libraries diversas-> https://www.arduinolibraries.info/architectures/esp32
 
 //pinMatrixInAttach
 //pinMatrixOutAttach
 
 
 // mis a jour v1.5
+
+// -> IAQ Accuracy=0 could either mean:
+//  * BSEC was just started, and the sensor is stabilizing (this lasts normally 5min in LP mode or 20min in ULP mode),
+//  * there was a timing violation (i.e. BSEC was called too early or too late), which should be indicated by a warning/error flag by BSEC,
+// -> IAQ Accuracy=1 means the background history of BSEC is uncertain. This typically means the gas sensor data was too stable for BSEC to clearly define its references,
+// -> IAQ Accuracy=2 means BSEC found a new calibration data and is currently calibrating,
+// -> IAQ Accuracy=3 means BSEC calibrated successfully.
