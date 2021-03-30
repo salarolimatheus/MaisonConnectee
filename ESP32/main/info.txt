@@ -25,7 +25,7 @@ Version 0.1.0 - 28/02/2021
 //pinMatrixInAttach
 //pinMatrixOutAttach
 
-
+// https://randomnerdtutorials.com/wifimanager-with-esp8266-autoconnect-custom-parameter-and-manage-your-ssid-and-password/
 // mis a jour v1.5
 
 // -> IAQ Accuracy=0 could either mean:
@@ -34,3 +34,7 @@ Version 0.1.0 - 28/02/2021
 // -> IAQ Accuracy=1 means the background history of BSEC is uncertain. This typically means the gas sensor data was too stable for BSEC to clearly define its references,
 // -> IAQ Accuracy=2 means BSEC found a new calibration data and is currently calibrating,
 // -> IAQ Accuracy=3 means BSEC calibrated successfully.
+
+https://github.com/plapointe6/EspMQTTClient/blob/master/examples/SimpleMQTTClient/SimpleMQTTClient.ino
+https://github.com/plapointe6/EspMQTTClient
+https://github.com/cmmakerclub/MQTT-Connector

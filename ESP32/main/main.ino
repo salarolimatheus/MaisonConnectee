@@ -14,7 +14,7 @@ void setup() {
     if (debugMode)
         ConfigureSerialDebug(SERIAL_BAUD_RATE);
 
-    //ConfigureWiFi();
+    ConfigureWiFi();
 
     if (!ConfigureBsec(&sensorBsec, &mySPI, VSPI)) {
         PackageError packageError = AnalyseAndRetryBsec(&sensorBsec, &mySPI, VSPI);
@@ -29,4 +29,6 @@ void loop() {
         PrintBsecData(&packageDataBsec);
     else if (status == SENSOR_ERROR)
         PackageError packageError = AnalyseAndRetryBsec(&sensorBsec, &mySPI, VSPI);
+
+    checkWiFi();
 }
